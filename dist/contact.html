@@ -101,27 +101,85 @@
             <!-- Mobile Menu Area end -->  
         </header>
         <!--End of Header Area-->
-        <!--Breadcrumb Banner Area Start-->
-        <div class="breadcrumb-banner-area">
+        <!--End of Breadcrumb Banner Area-->
+        <!--Class Details Area Start-->
+        <!--Google Map Area Start -->
+        <div class="google-map-area">
+            <!--  Map Section -->
+            <div id="contacts" class="map-area">
+                <div id="googleMap" style="width:100%;height:451px;"></div>
+            </div>
+            <div class="breadcrumb-bar">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+        <div class="contact-area section-padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="breadcrumb-text">
-                            <h1 class="text-center">The Evolution of Political Campaign Advertisements</h1>
-                            <div class="breadcrumb-bar">
-                                <ul class="breadcrumb">
-                                </ul>
+                    <div class="col-lg-6">
+                        <div class="contact-area-container">
+                            <div class="single-title">
+                                <h3>Contact Info</h3>
+                            </div>
+                            <p>Carl Albert Congressional Research and Studies Center, The University of Oklahoma</p>
+                            <div class="contact-address-container">
+                                <div class="contact-address-info">
+                                    <div class="contact-icon">
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Address</h4>
+                                        <span>630 Parrington Oval rm 101, Norman, OK 73019</span>
+                                    </div>
+                                </div>
+                                <div class="contact-address-info">
+                                    <div class="contact-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Phone</h4>
+                                        <span>+14053256372</span>
+                                    </div>
+                                </div>
+                                <div class="contact-address-info">
+                                    <div class="contact-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h4>Email</h4>
+                                        <span>xxx@xxx.edu</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <div class="single-title">
+                                <h3>Send A Message</h3>
+                            </div>
+                            <div class="contact-form-container">
+                                <form id="contact-form" action="https://whizthemes.com/mail-php/jaber/contact.php" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" name="name" placeholder="Your Name *">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" name="email" placeholder="Your Email *">
+                                        </div>
+                                    </div>
+                                    <input type="text" name="subject" placeholder="Subject *">
+                                    <textarea name="message" class="yourmessage" placeholder="Your message"></textarea>
+                                    <button type="submit" class="button-default button-yellow submit"><i class="fa fa-send"></i>Submit</button>
+                                </form>
+								<p class="form-messege"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!--End of Breadcrumb Banner Area-->
-        <!--Class Details Area Start-->
-        <div class="class-details-area section-padding-top">
-            <div class="container">
-                
             </div>
         </div>
         <!--Footer Area Start-->
@@ -242,7 +300,33 @@
         
 		<!-- plugins JS
 		============================================ -->		
-        <script src="js/plugins.js"></script>	
+        <script src="js/plugins.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuU_0_uLMnFM-2oWod_fzC0atPZj7dHlU"></script>
+		<script src="https://www.google.com/jsapi"></script>
+		<script>
+			function initialize() {
+			  var mapOptions = {
+				zoom: 15,
+				scrollwheel: false,
+				center: new google.maps.LatLng(35.21022033963178, -97.44515999999162)
+			  };
+
+			  var map = new google.maps.Map(document.getElementById('googleMap'),
+				  mapOptions);
+
+
+			  var marker = new google.maps.Marker({
+				position: map.getCenter(),
+				animation:google.maps.Animation.BOUNCE,
+				icon: 'img/map-marker.png',
+				map: map
+			  });
+                
+			}
+                
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>	
         
 		<!-- main JS
 		============================================ -->		
