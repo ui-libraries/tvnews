@@ -3,9 +3,15 @@ import YouTubePlayer from 'youtube-player'
 import {
     videoList
 } from './videolist'
-let alreadyPlayed = []
+if (!localStorage.getItem('alreadyPlayed')) {
+  localStorage.setItem('alreadyPlayed', JSON.stringify([]));
+}
+
+let alreadyPlayed = JSON.parse(localStorage.getItem('alreadyPlayed'));
+
 let randomVideo = _.sample(videoList)
 alreadyPlayed.push(randomVideo)
+localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
 let player
 
 player = YouTubePlayer('video-container')
@@ -41,6 +47,25 @@ function getLikertLabel(input) {
     }
 }
 
+function changeBgColor(sliderValue) {
+  let red, green, blue;
+
+  if (sliderValue <= 50) {
+    // We are going from Red to White
+    red = 255;
+    green = blue = Math.round((sliderValue / 50) * 255);
+  } else {
+    // We are going from White to Green
+    red = Math.round((1 - (sliderValue - 50) / 50) * 255);
+    green = 255;
+    blue = red; // decrease blue in the same way as red
+  }
+
+  // Change the background color of the div
+  document.getElementById("slidecolor").style.backgroundColor = 
+    "rgb(" + red + "," + green + "," + blue + ")";
+}
+
 let slider = document.getElementById('slider')
 let isSliderReleased = false
 
@@ -49,10 +74,7 @@ slider.addEventListener('input', function() {
     sliderValue = _.toNumber(sliderValue)
     document.getElementById('slider-value').innerHTML = sliderValue
     document.getElementById('likert').innerHTML = getLikertLabel(sliderValue)
-    const red = sliderValue < 50 ? 255 : Math.round(255 - ((sliderValue - 50) * 5.1))
-    const green = sliderValue > 50 ? 255 : Math.round((sliderValue * 5.1))
-    const blue = 0
-    document.getElementById('slidecolor').style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
+    changeBgColor(sliderValue)
     isSliderReleased = false
     slider.addEventListener('change', function() {
         if (!isSliderReleased) {
@@ -79,6 +101,7 @@ player.on('stateChange', event => {
         // pick a random video from videoList that isn't in alredyPlayed
         randomVideo = _.sample(_.difference(videoList, alreadyPlayed))
         alreadyPlayed.push(randomVideo)
+        localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
         player.loadVideoById(randomVideo)
     }
 })
@@ -87,5 +110,6 @@ player.on('stateChange', event => {
 document.getElementById('next-video').addEventListener('click', function() {
     randomVideo = _.sample(_.difference(videoList, alreadyPlayed))
     alreadyPlayed.push(randomVideo)
+    localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
     player.loadVideoById(randomVideo)
 })
