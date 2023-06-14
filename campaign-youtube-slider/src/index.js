@@ -29,7 +29,7 @@ function getTimestamp() {
   return readableDate
 }
 
-ffunction getLikertLabel(input) {
+function getLikertLabel(input) {
     const value = Number(input);
     const ranges = [
         { max: 14, label: "Strongly Disagree" },
