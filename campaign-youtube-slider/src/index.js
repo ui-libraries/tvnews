@@ -29,31 +29,24 @@ function getTimestamp() {
   return readableDate
 }
 
-function getLikertLabel(input) {
-    const value = Number(input)
-    switch (true) {
-        case value <= 14:
-            return "Strongly Disagree"
-        case value <= 29:
-            return "Disagree"
-        case value <= 39:
-            return "Moderately Disagree"
-        case value <= 49:
-            return "Slightly Disagree"
-        case value <= 59:
-            return "Neither Agree nor Disagree"
-        case value <= 69:
-            return "Slightly Agree"
-        case value <= 84:
-            return "Moderately Agree"
-        case value <= 90:
-            return "Agree"
-        case value <= 100:
-            return "Strongly Agree"
-        default:
-            return "Invalid input"
-    }
+ffunction getLikertLabel(input) {
+    const value = Number(input);
+    const ranges = [
+        { max: 14, label: "Strongly Disagree" },
+        { max: 29, label: "Disagree" },
+        { max: 39, label: "Moderately Disagree" },
+        { max: 49, label: "Slightly Disagree" },
+        { max: 59, label: "Neither Agree nor Disagree" },
+        { max: 69, label: "Slightly Agree" },
+        { max: 84, label: "Moderately Agree" },
+        { max: 90, label: "Agree" },
+        { max: 100, label: "Strongly Agree" }
+    ];
+
+    const range = ranges.find(range => value <= range.max);
+    return range ? range.label : "Invalid input";
 }
+
 
 function exportToCsv() {
     // Fetch data from localStorage
