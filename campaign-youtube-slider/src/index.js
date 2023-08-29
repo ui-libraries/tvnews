@@ -30,7 +30,7 @@ function getTimestamp() {
 }
 
 function getLikertLabel(input) {
-    const value = Number(input);
+    const value = Number(input)
     const ranges = [
         { max: 14, label: "Strongly Disagree" },
         { max: 29, label: "Disagree" },
@@ -41,20 +41,20 @@ function getLikertLabel(input) {
         { max: 84, label: "Moderately Agree" },
         { max: 90, label: "Agree" },
         { max: 100, label: "Strongly Agree" }
-    ];
+    ]
 
-    const range = ranges.find(range => value <= range.max);
-    return range ? range.label : "Invalid input";
+    const range = ranges.find(range => value <= range.max)
+    return range ? range.label : "Invalid input"
 }
 
 
 function exportToCsv() {
     // Fetch data from localStorage
-    let data = JSON.parse(localStorage.getItem('videoValues'));
+    let data = JSON.parse(localStorage.getItem('videoValues'))
 
     if (!data) {
-        console.error("No data found in localStorage under 'videoValues'");
-        return;
+        console.error("No data found in localStorage under 'videoValues'")
+        return
     }
 
     // Create CSV content
