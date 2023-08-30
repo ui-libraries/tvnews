@@ -2,9 +2,13 @@ import * as _ from 'lodash'
 import YouTubePlayer from 'youtube-player'
 import {
     videoList
-} from './videolist'
+} from './random250'
 if (!localStorage.getItem('alreadyPlayed')) {
     localStorage.setItem('alreadyPlayed', JSON.stringify([]))
+}
+
+if (!localStorage.getItem('videoIndex')) {
+    localStorage.setItem('videoIndex', '0'); // Initialize at the first index
 }
 
 if (!localStorage.getItem('videoValues')) {
@@ -13,15 +17,27 @@ if (!localStorage.getItem('videoValues')) {
 
 let alreadyPlayed = JSON.parse(localStorage.getItem('alreadyPlayed'))
 let videoValues = JSON.parse(localStorage.getItem('videoValues'))
+let videoIndex = parseInt(localStorage.getItem('videoIndex'));
 
-let randomVideo = _.sample(videoList)
-alreadyPlayed.push(randomVideo)
-localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
+// Check if you've reached the end of the video list and reset the index if so
+if (videoIndex >= videoList.length) {
+    videoIndex = 0;
+}
+
+// Get the next video to play
+let nextVideo = videoList[videoIndex];
+
+// Update the list of already played videos and the video index
+alreadyPlayed.push(nextVideo);
+localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed));
+localStorage.setItem('videoIndex', (videoIndex + 1).toString());
+
 let player
 
 player = YouTubePlayer('video-container')
-player.loadVideoById(randomVideo)
+player.loadVideoById(nextVideo)
 let userId = Math.random().toString(36).slice(2)
+document.getElementById('video-title').innerText = `Video Index: ${videoIndex+1}, Video ID: ${nextVideo}`;
 
 function getTimestamp() {
   let currentDate = new Date()
@@ -111,13 +127,15 @@ slider.addEventListener('input', function() {
     isSliderReleased = false
     slider.addEventListener('change', function() {
         if (!isSliderReleased) {
+            let videoNum = parseInt(localStorage.getItem('videoIndex'))
             player.getCurrentTime().then(value => {
                 let newValue = _.toInteger(document.getElementById('slider').value)
                 // create a json object with the current time and the slider value
                 let time = {
                     "Seconds": Math.trunc(value),
                     "Likert Value": newValue,
-                    "Video ID": randomVideo,
+                    "Video ID": nextVideo,
+                    "Video Index": videoNum,
                     "User ID": userId,
                     "Timestamp": getTimestamp()
                 }
@@ -134,29 +152,61 @@ slider.addEventListener('input', function() {
 
 player.on('stateChange', event => {
     if (event.data === 0) {
-        document.getElementById("slidecolor").style.backgroundColor = "white"
-        document.getElementById('slider-value').innerHTML = 50
-        document.getElementById('slider').value = 50
-        document.getElementById('likert').innerHTML = "Neither Agree nor Disagree"
-        // pick a random video from videoList that isn't in alredyPlayed
-        randomVideo = _.sample(_.difference(videoList, alreadyPlayed))
-        alreadyPlayed.push(randomVideo)
-        localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
-        player.loadVideoById(randomVideo)
-    }
-})
+        // Reset UI elements
+        document.getElementById("slidecolor").style.backgroundColor = "white";
+        document.getElementById('slider-value').innerHTML = 50;
+        document.getElementById('slider').value = 50;
+        document.getElementById('likert').innerHTML = "Neither Agree nor Disagree";
 
-// add event listener to the next-video button
+        // Fetch the current videoIndex from localStorage
+        let videoIndex = parseInt(localStorage.getItem('videoIndex'));
+
+        // If reached the end of the list, wrap to the beginning
+        if (videoIndex >= videoList.length) {
+            videoIndex = 0;
+        }
+
+        // Fetch the next video based on the current index
+        let nextVideo = videoList[videoIndex];
+
+        // Update alreadyPlayed and videoIndex in localStorage
+        alreadyPlayed.push(nextVideo);
+        localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed));
+        localStorage.setItem('videoIndex', (videoIndex + 1).toString());
+
+        // Load the next video
+        player.loadVideoById(nextVideo);
+        document.getElementById('video-title').innerText = `Video Index: ${videoIndex+1}, Video ID: ${nextVideo}`;
+    }
+});
+
 document.getElementById('next-video').addEventListener('click', function() {
-    document.getElementById("slidecolor").style.backgroundColor = "white"
-    document.getElementById('slider-value').innerHTML = 50
-    document.getElementById('slider').value = 50
-    document.getElementById('likert').innerHTML = "Neither Agree nor Disagree"
-    randomVideo = _.sample(_.difference(videoList, alreadyPlayed))
-    alreadyPlayed.push(randomVideo)
-    localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
-    player.loadVideoById(randomVideo)
-})
+    // Resetting the UI elements
+    document.getElementById("slidecolor").style.backgroundColor = "white";
+    document.getElementById('slider-value').innerHTML = 50;
+    document.getElementById('slider').value = 50;
+    document.getElementById('likert').innerHTML = "Neither Agree nor Disagree";
+
+    // Fetch the current videoIndex from localStorage
+    let videoIndex = parseInt(localStorage.getItem('videoIndex'));
+
+    // If reached the end of the list, wrap to the beginning
+    if (videoIndex >= videoList.length) {
+        videoIndex = 0;
+    }
+
+    // Fetch the next video based on the current index
+    nextVideo = videoList[videoIndex];
+
+    // Update alreadyPlayed and videoIndex in localStorage
+    alreadyPlayed.push(nextVideo);
+    localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed));
+    localStorage.setItem('videoIndex', (videoIndex + 1).toString());
+
+    // Load the next video
+    player.loadVideoById(nextVideo);
+    document.getElementById('video-title').innerText = `Video Index: ${videoIndex+1}, Video ID: ${nextVideo}`;
+});
 
 // add event listener to the download button
 document.getElementById('download').addEventListener('click', function() {
