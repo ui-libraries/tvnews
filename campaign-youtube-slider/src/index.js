@@ -40,10 +40,17 @@ player.stopVideo()
 let userId = Math.random().toString(36).slice(2)
 document.getElementById('video-title').innerText = `Video Index: ${videoIndex+1}, Video ID: ${nextVideo}`;
 
-function getTimestamp() {
-  let currentDate = new Date()
-  let readableDate = currentDate.toLocaleString()
-  return readableDate
+function getTimestamp(t) {
+    console.log(t)
+    let currentDate = new Date()
+    // get Unix timestamp in milliseconds
+    let timestampM = currentDate.getTime()
+    // get the Unix timestamp in seconds
+    let timestampS = Math.floor(timestampM / 1000)
+    let readableDate = currentDate.toLocaleString()
+    if (t === 's') return timestampS.toString()
+    if (t === 'm') return timestampM.toString()
+    if (t === 'r') return readableDate
 }
 
 function getLikertLabel(input) {
@@ -138,7 +145,9 @@ slider.addEventListener('input', function() {
                     "Video ID": nextVideo,
                     "Video Index": videoNum,
                     "User ID": userId,
-                    "Timestamp": getTimestamp()
+                    "Timestamp": getTimestamp('r'),
+                    "Timestamp (seconds)": getTimestamp('s'),
+                    "Timestamp (milliseconds)": getTimestamp('m')
                 }
                 // push the json object to the videoValues array
                 videoValues.push(time)
@@ -196,7 +205,9 @@ function handleKeyOrSliderRelease() {
                 "Video ID": currentVideoID,
                 "Video Index": videoNum,
                 "User ID": userId,
-                "Timestamp": getTimestamp()
+                "Timestamp": getTimestamp('r'),
+                "Timestamp (seconds)": getTimestamp('s'),
+                "Timestamp (milliseconds)": getTimestamp('m')
             };
             videoValues.push(time);
             localStorage.setItem('videoValues', JSON.stringify(videoValues));
