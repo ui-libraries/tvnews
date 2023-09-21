@@ -2,7 +2,7 @@ import * as _ from 'lodash'
 import YouTubePlayer from 'youtube-player'
 import {
     videoList
-} from './random250'
+} from './random250_sep21.js'
 if (!localStorage.getItem('alreadyPlayed')) {
     localStorage.setItem('alreadyPlayed', JSON.stringify([]))
 }
