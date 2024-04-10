@@ -3,7 +3,7 @@ const video_data = [
         "title": "P 1500 75016",
         "url": "https://www.youtube.com/watch?v=--BAeCHBh18",
         "A": "The 1952 campaign ad for the candidate primarily uses repetition and colourful animations to persuade viewers. The ad frequently repeats \"Ike for president\" and showcases animated scenes emphasizing Ike's popularity. It uses a marching band theme and catchy music to generate enthusiasm, while subtly implying opposition to other candidates.",
-        "B": "The advertisement sings along to a tune of \u201cIke for president.\u201d Cartoon Americans and patriotic images stress the concept that everyone supports this candidate and for what he stands. It is expressed that bringing the candidate to Washington would be an American duty that everyone is fulfilling.",
+        "B": "The advertisement sings along to a tune of \"Ike for president.\" Cartoon Americans and patriotic images stress the concept that everyone supports this candidate and for what he stands. It is expressed that bringing the candidate to Washington would be an American duty that everyone is fulfilling.",
         "selection": {
             "A": "summary_4.docx",
             "B": "summary_1.docx"
@@ -55,17 +55,6 @@ const video_data = [
         "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/1ZNuDunUAMQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
     {
-        "title": "P 2122 141969",
-        "url": "https://www.youtube.com/watch?v=2Fwo3LusOtA",
-        "A": "",
-        "B": "",
-        "selection": {
-            "A": "",
-            "B": ""
-        },
-        "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/2Fwo3LusOtA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
-    },
-    {
         "title": "P 2098 140422",
         "url": "https://www.youtube.com/watch?v=4l7lH90vGhw",
         "A": "This 2012 political ad targets the Republican candidate, criticizing his economic plan and associating his presidency with the favoring of the wealthy. It repeatedly suggests the candidate will take money from ordinary citizens, visually demonstrated by a hand reaching into pockets. The ad criticizes his views on healthcare and tax cuts.",
@@ -86,17 +75,6 @@ const video_data = [
             "B": "summary_1.docx"
         },
         "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/5qm69xeMyX0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
-    },
-    {
-        "title": "P 1904 108512",
-        "url": "https://www.youtube.com/watch?v=8PKj8WJ3u3M",
-        "A": "",
-        "B": "",
-        "selection": {
-            "A": "",
-            "B": ""
-        },
-        "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/8PKj8WJ3u3M\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
     {
         "title": "P 1905 108583",
@@ -222,7 +200,7 @@ const video_data = [
     {
         "title": "P 1618 81849",
         "url": "https://www.youtube.com/watch?v=KQqif36gd24",
-        "A": "A diverse group of working-class people are described as the \u201cfaces of America.\u201d The candidate listens to them, understands them, and shares their dreams. At rallies, he emphasizes that he would prioritize and protect Social Security. The candidate is cut out for a difficult job as president.",
+        "A": "A diverse group of working-class people are described as the \"faces of America.\" The candidate listens to them, understands them, and shares their dreams. At rallies, he emphasizes that he would prioritize and protect Social Security. The candidate is cut out for a difficult job as president.",
         "B": "The ad showcases the candidate as a candidate who understands the American people, their hardships and their dreams. Through imagery showing diverse demographic groups, the ad emphasizes the candidate's commitment to protect Social Security funds. The candidate is presented as having the character and courage to fight for the public's interests.",
         "selection": {
             "A": "summary_1.docx",
@@ -377,7 +355,7 @@ const video_data = [
         "title": "P 2114 141382",
         "url": "https://www.youtube.com/watch?v=cui6DFTWKfs",
         "A": "The political ad juxtaposes scenes of historic action with current instances of economic challenge, associating the opposition with \"excessive spending\" and \"spiraling debt\". Intended to mobilize action, it promotes the idea of recovery, presenting the candidate as a solution to regain and secure \"The American Dream\". The ad stressed Pennsylvania's significance in determining the election's outcome.",
-        "B": "The advertisement summarizes Pennsylvania\u2019s role in forming American history and revolutionary change. The \u201cAmerican dream\u201d is now fading, but Pennsylvania could be a turning point with the opportunity to fix that. By electing the candidate, the state can restore belief in America. Inspirational music and themes help push this message.",
+        "B": "The advertisement summarizes Pennsylvania\u2019s role in forming American history and revolutionary change. The \"American dream\" is now fading, but Pennsylvania could be a turning point with the opportunity to fix that. By electing the candidate, the state can restore belief in America. Inspirational music and themes help push this message.",
         "selection": {
             "A": "summary_4.docx",
             "B": "summary_1.docx"
@@ -443,7 +421,7 @@ const video_data = [
         "title": "P 1361 63305",
         "url": "https://www.youtube.com/watch?v=h9yEYqdALYs",
         "A": "The ad, paid for by the candidate's Presidential Campaign Committee, pressures the urgent need for action and advocacy against AIDS. It criticizes the current leadership for their unfulfilled promises on AIDS policy. The ad features recurring visuals of two men kissing, HIV prevention instructions, and a repeated message, \"Kissing Doesn't Kill\".",
-        "B": "The advertisement displays two men kissing. In the background, previous policies about the AIDS epidemic are described as unsuccessful in finding a cure. It is made clear that prevention of AIDS is not complicated, as \u201ckissing doesn\u2019t kill,\u201d and the proper use of protection will prevent the spread of AIDS.",
+        "B": "The advertisement displays two men kissing. In the background, previous policies about the AIDS epidemic are described as unsuccessful in finding a cure. It is made clear that prevention of AIDS is not complicated, as \"kissing doesn\u2019t kill,\" and the proper use of protection will prevent the spread of AIDS.",
         "selection": {
             "A": "summary_4.docx",
             "B": "summary_2.docx"
@@ -574,7 +552,7 @@ const video_data = [
     {
         "title": "P 507 94878",
         "url": "https://www.youtube.com/watch?v=DwV8o9DzIRc",
-        "A": "The advertisement describes the president\u2019s sending troops to Central America as \u201cadvisors\u201d to the countries. Here, the troops await war while they serve as bodyguards to dictators. The vice president supports this action being done with American soldiers. The candidate, however, knows this is wrong and would get them out.",
+        "A": "The advertisement describes the president\u2019s sending troops to Central America as \"advisors\" to the countries. Here, the troops await war while they serve as bodyguards to dictators. The vice president supports this action being done with American soldiers. The candidate, however, knows this is wrong and would get them out.",
         "B": "The ad criticizes the Reagan-Mondale policy on troops in Central America, linking it to the Vietnam War and suggesting it could lead to a similar conflict. It contrasts this with the candidate's stance of withdrawing troops, positioning him as a new, courageous leader. The ad heavily features menacing imagery of a burning fuse.",
         "selection": {
             "A": "summary_2.docx",
@@ -816,10 +794,10 @@ const video_data = [
     {
         "title": "P 380 30565",
         "url": "https://www.youtube.com/watch?v=cZ7aNeSgorQ",
-        "A": "",
+        "A": "The advertisement describes the opposing candidate as a hostile man who would send military to foreign nations over minor disputes, and questions whether this is the president Americans want. In comparison, the candidate is known around the world for his role in peace. The choice is up to voters.",
         "B": "The ad contrasts the candidate's experience and reputation for peace with the opposing candidate's aggressive military proposals, such as sending troops to several countries and deploying a destroyer for a fishing controversy. The visuals set a somber tone, implying the gravity of the presidential role.",
         "selection": {
-            "A": "summary_1.docx",
+            "A": "summary_2.docx",
             "B": "summary_4.docx"
         },
         "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/cZ7aNeSgorQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
@@ -849,7 +827,7 @@ const video_data = [
     {
         "title": "P 1085 45276",
         "url": "https://www.youtube.com/watch?v=fl9u2cDabJs",
-        "A": "The candidate discusses the tax cut and how it cannot do anything for the people. He speaks on the current state of the economy and how the country is already in debt and will harm future generations by going more into debt to offer these tax cuts. He advocates \u201cstraight talk for a change\u201d. ",
+        "A": "The candidate discusses the tax cut and how it cannot do anything for the people. He speaks on the current state of the economy and how the country is already in debt and will harm future generations by going more into debt to offer these tax cuts. He advocates \"straight talk for a change\". ",
         "B": "The ad criticizes opposing candidates for proposing a minor tax cut, suggesting it's ineffective for job creation and fuels national debt. The candidate differentiates himself by emphasizing his commitment to practical governance over populist promises. The ad alternates between falling coins imagery and scenes of the candidate delivering this message to an attentive audience.",
         "selection": {
             "A": "summary_1.docx",
@@ -960,7 +938,7 @@ const video_data = [
         "title": "P 140 10498",
         "url": "https://www.youtube.com/watch?v=0uZ-oQhnJ3k",
         "A": "The 1972 presidential ad presents the candidate as a people's Democrat, akin to figures like FDR, Truman, and Kennedy. The ad includes scenes of the candidate engaging with diverse groups at public gatherings, along with the \"Vote for the candidate\" slogan and text emphasizing his commitment to the common man.",
-        "B": "The advertisement details a type of person that Americans want to reach out and \u201ctouch.\u201d Among this group is the candidate running for president. Pictured in the video is said candidate physically embracing audiences. The candidate has worked hard for the common man, and this is what Americans want.",
+        "B": "The advertisement details a type of person that Americans want to reach out and \"touch.\" Among this group is the candidate running for president. Pictured in the video is said candidate physically embracing audiences. The candidate has worked hard for the common man, and this is what Americans want.",
         "selection": {
             "A": "summary_4.docx",
             "B": "summary_2.docx"
@@ -1025,11 +1003,11 @@ const video_data = [
     {
         "title": "P 2 00023",
         "url": "https://www.youtube.com/watch?v=8qzTT9vUJNY",
-        "A": "",
-        "B": "",
+        "A": "The ad features a man endorsing the candidate, stressing the need for a knowledgeable leader, not an \"amateur\" in the presidency. The entire ad shows the man in various settings, consistently surrounded by signs endorsing the same candidate, whilst emphasizing his decision to switch his vote.",
+        "B": "A man describes his thoughts on the upcoming election. He has come to the conclusion to vote for the candidate. Because an amateur would hurt America, and the candidate is an expert in civilian government, the man is voting for him. The man even switched his vote for the candidate.",
         "selection": {
-            "A": "",
-            "B": ""
+            "A": "summary_3.docx",
+            "B": "summary_1.docx"
         },
         "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/8qzTT9vUJNY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
@@ -1179,11 +1157,11 @@ const video_data = [
     {
         "title": "P 5 00083",
         "url": "https://www.youtube.com/watch?v=basW7Xngx6A",
-        "A": "",
-        "B": "",
+        "A": "A children's doctor endorses the candidate due to the candidate's platform for federal aid to education. The doctor discusses the candidate's time as a senator, working for aid, scholarship, and more while the opposing candidate has voted against such measures; thus, the doctor has faith in the candidate's ability.",
+        "B": "In this 1960 political TV ad, Dr. Benjamin Spock endorses the candidate's educational policy advocating for federal aid to education and highlights the opposing candidate's contradictory voting record. He also supports the candidate's efforts to secure medical care for the retired, lauding the candidate's sincerity and fidelity to his words.",
         "selection": {
-            "A": "",
-            "B": ""
+            "A": "summary_3.docx",
+            "B": "summary_4.docx"
         },
         "embed": "<iframe class=\"youtube-video\" src=\"https://www.youtube.com/embed/basW7Xngx6A\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
@@ -1235,7 +1213,7 @@ const video_data = [
         "title": "P 2 30",
         "url": "https://www.youtube.com/watch?v=nCoTHLjPdl8",
         "A": "The political TV ad utilizes flattering black and white footage of a woman delivering a song endorsing the candidate. Lyrics highlight the candidate's civilian background as a departure from 'soldier' mentality, pledging to lead towards peace. Various visuals underline the campaign\u2019s endorsement, culminating with a call-to-action, \"Vote for the Candidate\".",
-        "B": "In a rendition sung to the tune of \u201cAmerica the Beautiful,\u201d a formally dressed woman encourages voters to support the candidate. The song lauds the candidate\u2019s humble origins and achievements, and highlights their commitment to peace amidst other candidates\u2019 focus on war. ",
+        "B": "In a rendition sung to the tune of \"America the Beautiful,\" a formally dressed woman encourages voters to support the candidate. The song lauds the candidate\u2019s humble origins and achievements, and highlights their commitment to peace amidst other candidates\u2019 focus on war. ",
         "selection": {
             "A": "summary_4.docx",
             "B": "summary_1.docx"
@@ -1300,7 +1278,7 @@ const video_data = [
     {
         "title": "P 150 10702",
         "url": "https://www.youtube.com/watch?v=vSwQjWJIljc",
-        "A": "Visual imagery of toy army men and models is used to depict the opposing candidates plans to reduce military funding, which, a senator claims would undermine national security. The candidate, portrayed alongside military officers as \u201cHail to the Chief\u201d plays, emphasizes a commitment to negotiating peace from a position of strength. \n",
+        "A": "Visual imagery of toy army men and models is used to depict the opposing candidates plans to reduce military funding, which, a senator claims would undermine national security. The candidate, portrayed alongside military officers as \"Hail to the Chief\" plays, emphasizes a commitment to negotiating peace from a position of strength. \n",
         "B": "The 1972 political television ad criticizes the opposing candidate's defense plan, highlighting proposed substantial military cuts. Using visuals of soldiers and military equipment, it stresses the potential risk to national security. The ad strongly positions the candidate as an advocate for a strong military and, thus, a strong America.",
         "selection": {
             "A": "summary_3.docx",
