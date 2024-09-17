@@ -3427,6 +3427,25 @@ span.schedule-time {
     border-color: rgba(27, 180, 185, 0.7);
 }
 
+.search-bar-container {
+    display: flex; /* Align items horizontally */
+    justify-content: flex-start; /* Align elements to the left */
+    align-items: center; /* Vertically center */
+    gap: 10px; /* Add some space between the input and the button */
+    margin-bottom: 20px; /* Optional: Add some space below the search bar */
+}
+
+.search-input {
+    width: 50%; /* Make the input take up half of the container width */
+}
+
+.search-button {
+    white-space: nowrap; /* Prevent the button text from wrapping */
+    padding-left: 20px; /* Optional: Add some padding to the left */
+    padding-right: 20px; /* Optional: Add some padding to the right */
+}
+
+
 
 
 

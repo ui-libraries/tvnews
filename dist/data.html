@@ -124,14 +124,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Search Political Campaign Videos</h2>
-                        <input type="text" id="searchInput" placeholder="Enter search terms..." class="form-control">
-                        <button id="searchButton" class="btn btn-primary">Search</button> <!-- Search Button -->
+                        <h2>Search U.S. Presidential Ads</h2>
+                        <div class="search-bar-container">
+                            <input type="text" id="searchInput" placeholder="Enter search terms..." class="form-control search-input">
+                            <button id="searchButton" class="btn btn-primary search-button">Search</button> <!-- Search Button -->
+                        </div>
                         <div id="results" class="search-results"></div>
                     </div>
                 </div>
             </div>
         </div>
+        
         
         
         <!--Footer Area Start-->
@@ -230,10 +233,15 @@ let fuse
 
 // Load the data asynchronously
 async function loadData() {
-    const response = await fetch('trimmed_videos.json') // Ensure path is correct
-    const data = await response.json()
-    originalData = data // Store the original data for exact matching
-    return data
+    try {
+        const response = await fetch('trimmed_videos.json') // Ensure path is correct
+        const data = await response.json()
+        originalData = data // Store the original data for exact matching
+        console.log("Data loaded successfully:", data)
+        return data
+    } catch (error) {
+        console.error("Error loading JSON data:", error)
+    }
 }
 
 // Fuse.js options with lower threshold for stricter matches
@@ -246,37 +254,54 @@ const options = {
 // Initialize Fuse.js and create the search index
 async function initializeSearch() {
     const data = await loadData()
-    fuse = new Fuse(data, options) // Create Fuse index with data
+    if (data) {
+        fuse = new Fuse(data, options) // Create Fuse index with data
+        console.log("Fuse index initialized.")
+    }
+}
+
+// Debounce function to avoid multiple rapid search calls
+function debounce(func, wait) {
+    let timeout
+    return function(...args) {
+        const context = this
+        clearTimeout(timeout)
+        timeout = setTimeout(() => func.apply(context, args), wait)
+    }
 }
 
 // Perform exact match check before fuzzy search
-document.getElementById('searchButton').addEventListener('click', async () => {
+document.getElementById('searchButton').addEventListener('click', debounce(async () => {
     const query = document.getElementById('searchInput').value.toLowerCase()
     if (!fuse) await initializeSearch() // Ensure the search index is loaded
 
-    // Check for exact match in the original data
-    const exactResults = originalData.filter(item => {
-        const title = typeof item.TITLE === 'string' ? item.TITLE.toLowerCase() : ''
-        const summary = typeof item.SUMMARY === 'string' ? item.SUMMARY.toLowerCase() : ''
-        const transcript = typeof item.whisper_largev3 === 'string' ? item.whisper_largev3.toLowerCase() : ''
+    if (originalData) {
+        // Check for exact match in the original data
+        const exactResults = originalData.filter(item => {
+            const title = typeof item.TITLE === 'string' ? item.TITLE.toLowerCase() : ''
+            const summary = typeof item.SUMMARY === 'string' ? item.SUMMARY.toLowerCase() : ''
+            const transcript = typeof item.whisper_largev3 === 'string' ? item.whisper_largev3.toLowerCase() : ''
 
-        return title.includes(query) || summary.includes(query) || transcript.includes(query)
-    })
+            return title.includes(query) || summary.includes(query) || transcript.includes(query)
+        })
 
-    // If exact matches found, show them
-    if (exactResults.length > 0) {
-        displayResults(exactResults.map(item => ({ item, score: 0 })))
-    } else {
-        // Otherwise, perform fuzzy search
-        const fuzzyResults = fuse.search(query)
-        displayResults(fuzzyResults)
+        // If exact matches found, show them
+        if (exactResults.length > 0) {
+            console.log("Exact match results found:", exactResults)
+            displayResults(exactResults.map(item => ({ item, score: 0 })))
+        } else {
+            // Otherwise, perform fuzzy search
+            const fuzzyResults = fuse.search(query)
+            console.log("Fuzzy search results found:", fuzzyResults)
+            displayResults(fuzzyResults)
+        }
     }
-})
+}, 300)) // Debouncing with 300ms delay
 
-// Display search results dynamically
+
 function displayResults(results) {
     const resultsContainer = document.getElementById('results')
-    resultsContainer.innerHTML = '' // Clear previous results
+    resultsContainer.innerHTML = '' 
 
     if (results.length === 0) {
         resultsContainer.innerHTML = '<p>No matches found</p>'
@@ -284,23 +309,32 @@ function displayResults(results) {
     }
 
     results.forEach(result => {
-        const video = result.item // Extract the video data from result
+        const video = result.item 
+        const vimeoUrl = `https://vimeo.com/${video.VIMEO_ID}` 
+        const thumbnailUrl = `https://vumbnail.com/${video.VIMEO_ID}.jpg` 
+
         const resultElement = document.createElement('div')
         resultElement.classList.add('result-item')
         resultElement.innerHTML = `
-            <h3>${video.TITLE || 'Untitled Video'}</h3>
-            <p><strong>Election Year:</strong> ${video.ELECTION_YEAR || 'Unknown'}</p>
-            <p><strong>Party:</strong> ${video.PARTY || 'Unknown'}</p>
-            <p><strong>Name:</strong> ${video.FIRST_NAME || ''} ${video.LAST_NAME || ''}</p>
-            <p>${video.SUMMARY || 'No summary available'}</p>
-            <p><strong>Transcript Excerpt:</strong> ${video.whisper_largev3.slice(0, 100)}...</p> <!-- Show only part of the transcript -->
+            <a href="${vimeoUrl}" target="_blank"><h3>${video.TITLE || 'Untitled Video'}</h3></a>
+            <a href="${vimeoUrl}" target="_blank">
+                <img src="${thumbnailUrl}" alt="${video.TITLE || 'Video Thumbnail'}" style="max-width: 295px;">
+            </a><br>
+            <strong>Election Year:</strong> ${video.ELECTION_YEAR || 'Unknown'}<br>
+            ${video.SUMMARY || 'No summary available'}<br>
+            <strong>Transcript Excerpt:</strong> ${video.whisper_largev3.slice(0, 100)}...<br>
+            <hr>
+            
         `
         resultsContainer.appendChild(resultElement)
     })
 }
 
+
 // Initialize the search index on page load
 initializeSearch()
+
+
 
 
         </script>
