@@ -3445,6 +3445,10 @@ span.schedule-time {
     padding-right: 20px; /* Optional: Add some padding to the right */
 }
 
+.filter-dropdown {
+    width: 150px;
+}
+
 
 
 
