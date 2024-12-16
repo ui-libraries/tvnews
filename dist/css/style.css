@@ -3449,6 +3449,55 @@ span.schedule-time {
     width: 150px;
 }
 
+/* Ensure teacher photos have a fixed size and maintain aspect ratio */
+.teacher-photo {
+    width: 150px; /* Adjust width to match previous photo size */
+    height: 150px; /* Ensure consistent square size */
+    object-fit: cover; /* Crop the image to fit the square */
+    border-radius: 50%; /* Make the image circular */
+    margin: 0 auto; /* Center the image */
+    display: block; /* Ensure proper centering in text alignment */
+}
+
+/* Adjust single-teacher card for spacing and alignment */
+.single-teacher {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.teacher-info {
+    margin-top: 15px;
+}
+
+.teacher-info h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.teacher-info span {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.teacher-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.section-title {
+    padding-top: 10px; /* Adjust as needed */
+    margin-top: 0; /* Remove any default margin that might be causing the cut */
+}
+
+
 
 
 
