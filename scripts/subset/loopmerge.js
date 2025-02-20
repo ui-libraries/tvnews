@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 // Import the array of objects from the JS file
-const subset = require('./video_data_subset') // Adjust the file path as needed
+const subset = require('./video_data_subset_larger') // Adjust the file path as needed
 
 // Debugging: Ensure the subset is imported correctly
 if (!Array.isArray(subset)) {
@@ -14,5 +14,5 @@ if (!Array.isArray(subset)) {
 const csv = subset.map(obj => obj.title).join('\n')
 
 // Write the CSV file
-fs.writeFileSync('./loop_merge_subset.csv', `title\n${csv}`)
+fs.writeFileSync('./loop_merge_subset_larger.csv', `title\n${csv}`)
 console.log('CSV file created: loop_merge_subset.csv')

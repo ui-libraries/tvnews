@@ -16,13 +16,13 @@ const { video_data } = require('./index.js')
 // 4. Convert titles array to a Set for fast lookup
 const titleSet = new Set(titles)
 
-// 5. Filter video_data to keep only matching titles (case insensitive)
-const subset = video_data.filter(obj => titleSet.has(obj.title.trim().toLowerCase()))
+// 5. Filter video_data to keep only NON-matching titles (case insensitive)
+const subset = video_data.filter(obj => !titleSet.has(obj.title.trim().toLowerCase()))
 
-// Debugging: Print count and some unmatched titles
-console.log(`Found ${subset.length} matches out of ${titles.length} titles`)
-const unmatched = titles.filter(t => !video_data.some(v => v.title.trim().toLowerCase() === t))
-console.log("Unmatched Titles:", unmatched)
+// Debugging: Print count and some matched titles for verification
+console.log(`Kept ${subset.length} items out of ${video_data.length} total items`)
+const matched = titles.filter(t => video_data.some(v => v.title.trim().toLowerCase() === t))
+console.log("Excluded Titles:", matched)
 
 // 6. Write result to subset.json
-fs.writeFileSync(path.join(__dirname, 'subset.json'), JSON.stringify(subset, null, 2))
+fs.writeFileSync(path.join(__dirname, 'subset-larger.json'), JSON.stringify(subset, null, 2))
