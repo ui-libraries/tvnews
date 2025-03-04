@@ -1417,6 +1417,7 @@ span.gallery-text {
 /*----------------------------------------*/
 /*  15. Footer Area
 /*----------------------------------------*/
+.footer-area {margin-top: 100px;}
 .footer-area {background: #000000 none repeat scroll 0 0;}
 .footer-info {line-height: 15px;}
 .footer-info > span {
