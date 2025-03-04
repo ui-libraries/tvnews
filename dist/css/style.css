@@ -3498,6 +3498,11 @@ span.schedule-time {
     margin-top: 0; /* Remove any default margin that might be causing the cut */
 }
 
+#nsf_logo {
+    width: 200px;
+    height: 200px;
+}
+
 
 
 
