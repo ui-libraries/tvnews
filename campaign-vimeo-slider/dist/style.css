@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-container,
+.slidecontainer {
+  width: 100%;
+  max-width: 560px; /* Adjust the max-width value as needed */
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+.slidecontainer input[type="range"] {
+  width: 100%;
+}
+
+#slider-value {
+  font-size: larger;
+}
+
+#instructions {
+  width: 50%;
+}
+
+#next-video {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
