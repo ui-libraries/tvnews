@@ -11,6 +11,7 @@
     <div id="video-container">
     </div>
     <div id="slidercontainer" class="slidecontainer">
+      <p><strong>When you are ready to answer the above question for this video, please click the play button on the Vimeo player.</strong></p>
       <!-- https://stackoverflow.com/questions/28283332/style-lower-and-upper-fill-in-html5-range-input-->
       <input id="slider" type="range" min="0" max="100" value="50" class="slider">
       <div id="slidecolor">
@@ -24,5 +25,6 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
   <script src="js/bundle.js" charset="utf-8"></script>
+  <div id="focus-trap" tabindex="0" style="position: absolute; opacity: 0; pointer-events: none;"></div>
 </body>
 </html>
