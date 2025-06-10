@@ -37,19 +37,18 @@ function getTimestamp() {
 function getLikertLabel(input) {
   const value = Number(input)
   const ranges = [
-    { max: 14, label: "Strongly Disagree" },
-    { max: 29, label: "Disagree" },
-    { max: 39, label: "Moderately Disagree" },
-    { max: 49, label: "Slightly Disagree" },
-    { max: 59, label: "Neither Agree nor Disagree" },
-    { max: 69, label: "Slightly Agree" },
-    { max: 84, label: "Moderately Agree" },
-    { max: 90, label: "Agree" },
-    { max: 100, label: "Strongly Agree" }
+    { max: 14, label: "Very Cold" },
+    { max: 29, label: "Cold" },
+    { max: 44, label: "Somewhat Cold" },
+    { max: 55, label: "Neither Cold Nor Warm" },
+    { max: 70, label: "Somewhat Warm" },
+    { max: 85, label: "Warm" },
+    { max: 100, label: "Very Warm" }
   ]
   const range = ranges.find(r => value <= r.max)
   return range ? range.label : "Invalid input"
 }
+
 
 function exportToCsv() {
   let data = JSON.parse(localStorage.getItem('videoValues'))
@@ -82,17 +81,27 @@ function exportToCsv() {
 }
 
 function changeBgColor(sliderValue) {
-  let red, green, blue
-  if (sliderValue <= 50) {
-    red = 255
-    green = blue = Math.round((sliderValue / 50) * 255)
+  let color
+
+  if (sliderValue <= 14) {
+    color = 'blue' // Very Cold
+  } else if (sliderValue <= 29) {
+    color = 'cyan' // Cold
+  } else if (sliderValue <= 44) {
+    color = 'green' // Somewhat Cold
+  } else if (sliderValue <= 55) {
+    color = 'white' // Neither Cold Nor Warm
+  } else if (sliderValue <= 70) {
+    color = 'yellow' // Somewhat Warm
+  } else if (sliderValue <= 85) {
+    color = 'orange' // Warm
   } else {
-    red = Math.round((1 - (sliderValue - 50) / 50) * 255)
-    green = 255
-    blue = red
+    color = 'red' // Very Warm
   }
-  document.getElementById("slidecolor").style.backgroundColor = `rgb(${red},${green},${blue})`
+
+  document.getElementById("slidecolor").style.backgroundColor = color
 }
+
 
 let slider = document.getElementById('slider')
 let isSliderReleased = false

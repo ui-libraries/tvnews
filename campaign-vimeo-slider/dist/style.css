@@ -21,6 +21,11 @@
   pointer-events: none; /* allows clicks to pass through to iframe */
 }
 
+#colorscale {
+  width: 95%;
+  margin-bottom: 2rem;
+}
+
 .slidecontainer input[type="range"] {
   width: 100%;
 }
