@@ -248,3 +248,5 @@ export const videoList = [
 "993652957",
 "993653061",
 ]
+
+export default { videoList };
