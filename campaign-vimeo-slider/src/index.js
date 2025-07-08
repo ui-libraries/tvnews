@@ -163,6 +163,9 @@ function startApp() {
     alreadyPlayed.push(randomVideo.VIMEO_ID)
     localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
     player.loadVideo(randomVideo.VIMEO_ID)
+    
+    // Update the video title/details at the top
+    updateVideoTitle(videoList.indexOf(randomVideo), randomVideo.VIMEO_ID)
   })
 }
 
