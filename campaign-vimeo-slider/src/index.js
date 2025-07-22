@@ -34,17 +34,18 @@ function startApp() {
   let alreadyPlayed = JSON.parse(localStorage.getItem('alreadyPlayed'))
   let videoValues = JSON.parse(localStorage.getItem('videoValues'))
   let videoIndex = Number(localStorage.getItem('videoIndex')) || 1
-  let randomVideo = videoList[videoIndex - 1]
+  let currentVideoIndex = videoIndex - 1
+  let currentVideo = videoList[currentVideoIndex]
   document.getElementById('next-video').style.display = 'none'
-  updateVideoTitle(videoIndex, randomVideo.VIMEO_ID)
-  alreadyPlayed.push(randomVideo.VIMEO_ID)
+  updateVideoTitle(currentVideoIndex, currentVideo.VIMEO_ID)
+  alreadyPlayed.push(currentVideo.VIMEO_ID)
   localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
   let player = new Player('video-container', {
-    id: randomVideo.VIMEO_ID,
+    id: currentVideo.VIMEO_ID,
     width: 640
   })
 
-  let userId = Math.random().toString(36).slice(2)
+  let userId = localStorage.getItem('userId') || ''
 
   function getTimestamp() {
     return new Date().toLocaleString()
@@ -73,6 +74,15 @@ function startApp() {
       return
     }
 
+    // Filter for current user and current ad only
+    const userId = localStorage.getItem('userId') || ''
+    const currentAdId = currentVideo.VIMEO_ID
+    data = data.filter(row => row["User ID"] === userId && row["Video ID"] === currentAdId)
+    if (!data.length) {
+      alert("No data for this user and ad.")
+      return
+    }
+
     const replacer = (key, value) => value === null ? '' : value
     const header = Object.keys(data[0])
     let csv = data.map(row => header.map(field => JSON.stringify(row[field], replacer)).join(','))
@@ -84,10 +94,9 @@ function startApp() {
     let url = URL.createObjectURL(blob)
     link.setAttribute("href", url)
 
-    let indexForFilename = Number(localStorage.getItem('videoIndex')) + 1 || 1
-    let idForFilename = randomVideo.VIMEO_ID
+    let idForFilename = currentAdId
 
-    link.setAttribute("download", `video_index_${indexForFilename}_video_id_${idForFilename}.csv`)
+    link.setAttribute("download", `video_id_${idForFilename}.csv`)
     link.style.visibility = 'hidden'
     document.body.appendChild(link)
     link.click()
@@ -136,7 +145,7 @@ function startApp() {
           let time = {
             "Seconds": Math.trunc(value),
             "Likert Value": newValue,
-            "Video ID": randomVideo.VIMEO_ID,
+            "Video ID": currentVideo.VIMEO_ID,
             "User ID": userId,
             "Timestamp": getTimestamp()
           }
@@ -154,18 +163,26 @@ function startApp() {
 
   // Next video button
   document.getElementById('next-video').addEventListener('click', () => {
+    // Hide the Next Video button until export is clicked again
+    document.getElementById('next-video').style.display = 'none'
     document.getElementById("slidecolor").style.backgroundColor = "white"
     document.getElementById('slider-value').innerHTML = 50
     document.getElementById('slider').value = 50
     document.getElementById('likert').innerHTML = "Neither Agree nor Disagree"
 
-    randomVideo = _.sample(_.difference(videoList, alreadyPlayed))
-    alreadyPlayed.push(randomVideo.VIMEO_ID)
+    // Increment video index and save
+    currentVideoIndex++
+    if (currentVideoIndex >= videoList.length) {
+      alert('No more videos left!')
+      return
+    }
+    localStorage.setItem('videoIndex', currentVideoIndex)
+    currentVideo = videoList[currentVideoIndex]
+    alreadyPlayed.push(currentVideo.VIMEO_ID)
     localStorage.setItem('alreadyPlayed', JSON.stringify(alreadyPlayed))
-    player.loadVideo(randomVideo.VIMEO_ID)
-    
+    player.loadVideo(currentVideo.VIMEO_ID)
     // Update the video title/details at the top
-    updateVideoTitle(videoList.indexOf(randomVideo), randomVideo.VIMEO_ID)
+    updateVideoTitle(currentVideoIndex, currentVideo.VIMEO_ID)
   })
 }
 
