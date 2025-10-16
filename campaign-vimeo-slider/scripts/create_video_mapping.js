@@ -34,3 +34,4 @@ try {
   console.error('❌ Error processing files:', error.message);
   process.exit(1);
 }
+

@@ -9,8 +9,8 @@
 .slidecontainer {
   width: 100%;
   max-width: 560px;
-  padding-top: 20px;
-  margin-top: 40px;
+  padding-top: 10px;
+  margin-top: 15px;
   position: relative;
 }
 
@@ -39,8 +39,16 @@
 }
 
 #next-video {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#download {
+  margin-top: 5px;
+}
+
+.slidecontainer p {
+  margin: 5px 0;
 }
 
 /* Ensure iframe allows interaction but not focus hijack */
